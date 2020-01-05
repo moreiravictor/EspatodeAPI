@@ -1,4 +1,4 @@
-package br.com.espatodea.postAPI.service;
+package br.com.espatodea.postAPI.core.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,10 +6,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.espatodea.postAPI.entity.PostEntity;
-import br.com.espatodea.postAPI.mapper.PostMapper;
-import br.com.espatodea.postAPI.model.Post;
-import br.com.espatodea.postAPI.repository.PostRepository;
+import br.com.espatodea.postAPI.adapter.datastore.entity.PostEntity;
+import br.com.espatodea.postAPI.adapter.datastore.mapper.PostMapper;
+import br.com.espatodea.postAPI.adapter.datastore.repository.PostRepository;
+import br.com.espatodea.postAPI.core.model.Post;
+
+
 
 @Service
 public class PostService {

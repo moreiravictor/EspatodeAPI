@@ -1,4 +1,4 @@
-package br.com.espatodea.postAPI.controller;
+package br.com.espatodea.postAPI.adapter.http.controller;
 
 import java.util.List;
 
@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.espatodea.postAPI.model.Post;
-import br.com.espatodea.postAPI.service.PostService;
+import br.com.espatodea.postAPI.core.model.Post;
+import br.com.espatodea.postAPI.core.service.PostService;
+
 
 @RestController
 @RequestMapping("post")

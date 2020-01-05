@@ -1,4 +1,4 @@
-package br.com.espatodea.postAPI.entity;
+package br.com.espatodea.postAPI.adapter.datastore.entity;
 
 import java.util.Date;
 
