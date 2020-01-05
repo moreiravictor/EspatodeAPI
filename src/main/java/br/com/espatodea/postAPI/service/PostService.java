@@ -1,5 +1,8 @@
 package br.com.espatodea.postAPI.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +20,14 @@ public class PostService {
 	public Post persist(Post model) {
 		PostEntity entity = repo.save(PostMapper.marshall(model));
 		return PostMapper.unmarshall(entity);
+	}
+	
+	public List<Post> list() {
+		List<Post> postList = new ArrayList<>(); 
+		List<PostEntity> entityList = repo.findAll();
+		for (PostEntity entity : entityList) {
+			postList.add(PostMapper.unmarshall(entity));
+		}
+		return postList;
 	}
 }
