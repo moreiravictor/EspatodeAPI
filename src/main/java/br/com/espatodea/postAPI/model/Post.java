@@ -1,6 +1,9 @@
 package br.com.espatodea.postAPI.model;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.GeneratedValue;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,10 +16,13 @@ import lombok.Setter;
 @Builder
 @Setter
 @Getter
-public class Post {
+public class Post{
+
+	
 	private String content;
 	private String title;
 	private int likes;
+	@GeneratedValue
 	private int id;
 	private int category;
 	private String author;

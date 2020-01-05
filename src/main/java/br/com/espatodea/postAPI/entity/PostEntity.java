@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -23,7 +24,8 @@ import lombok.Setter;
 @Getter
 @Table(name = "posts")
 public class PostEntity {
-	
+
+
 	@Column(name = "post_content")
 	private String content;
 	
@@ -33,7 +35,9 @@ public class PostEntity {
 	@Column(name = "post_likes")
 	private Integer likes;
 	
+	
 	@Id
+	@GeneratedValue
 	@Column(name = "post_id")
 	private Integer id;
 	
