@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.GeneratedValue;
 
+import org.springframework.lang.Nullable;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,10 +23,10 @@ public class Post{
 	
 	private String content;
 	private String title;
-	private int likes;
+	private Integer likes;
 	@GeneratedValue
-	private int id;
-	private int category;
+	private Integer id;
+	private Integer category;
 	private String author;
 	private Date date;
 }
