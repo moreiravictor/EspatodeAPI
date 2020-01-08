@@ -3,6 +3,7 @@ package br.com.espatodea.postAPI.adapter.http.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +17,7 @@ import br.com.espatodea.postAPI.core.model.Post;
 import br.com.espatodea.postAPI.core.service.PostService;
 import javassist.NotFoundException;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping("post")
 public class PostController {
