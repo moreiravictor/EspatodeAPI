@@ -1,15 +1,15 @@
 package br.com.espatodea.postAPI.core.model;
 
-public enum CategoryEnum {
-	Environment(1),
-	Tips(2),
-	Projects(3),
-	OurProjects(4),
-	OtherProjects(5),
-	Entertainment(6),
-	Food(7),
-	FoodTips(8),
-	FoodReceits(9);
+public enum CategoryEnum {	
+	Environment(0),
+	EnvironmentTips(1),
+	Projects(2),
+	OurProjects(3),
+	OtherProjects(4),
+	Entertainment(5),
+	Food(6),
+	FoodTips(7),
+	FoodReceits(8);
 	
 	public int categoryValue;
 	

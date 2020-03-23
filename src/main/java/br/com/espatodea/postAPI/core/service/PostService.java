@@ -53,7 +53,7 @@ public class PostService {
 		}
 		
 		PostEntity entity = optionalEntity.get();
-		entity.setAuthor((model.getAuthor() != null) ? model.getAuthor() : entity.getAuthor());
+		entity.setPost_author((model.getPost_author() != null) ? model.getPost_author() : entity.getPost_author());
 		entity.setTitle((model.getTitle() != null) ? model.getTitle() : entity.getTitle());
 
 		return PostMapper.unmarshall(repo.save(entity));	

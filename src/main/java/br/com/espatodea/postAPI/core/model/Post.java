@@ -20,19 +20,19 @@ import lombok.Setter;
 @Getter
 public class Post{
 	
-	private String content;
+	private String post_content;
 	
 	private String title;
 	
-	private Integer likes;
+	private Integer post_likes;
 	
 	@GeneratedValue
-	private Integer id;
+	private Integer post_id;
 	
-	private Integer category;
+	private Integer post_category;
 	
-	private String author;
+	private String post_author;
 	
-	private Date date;
+	private Date post_date;
 	
 }

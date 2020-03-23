@@ -7,26 +7,26 @@ public class PostMapper {
 	
 	public static PostEntity marshall(Post model) {
 		return PostEntity.builder()
-				.content(model.getContent())
-				.id(model.getId())
-				.likes(model.getLikes())
+				.post_content(model.getPost_content())
+				.post_id(model.getPost_id())
+				.post_likes(model.getPost_likes())
 				.title(model.getTitle())
-				.author(model.getAuthor())
-				.category(model.getCategory())
-				.date(model.getDate())
+				.post_author(model.getPost_author())
+				.post_category(model.getPost_category())
+				.post_date(model.getPost_date())
 				.build();
 	}
 	
 	
 	public static Post unmarshall(PostEntity entity) {
 		return Post.builder()
-				.content(entity.getContent())
-				.id(entity.getId())
-				.likes(entity.getLikes())
+				.post_content(entity.getPost_content())
+				.post_id(entity.getPost_id())
+				.post_likes(entity.getPost_likes())
 				.title(entity.getTitle())
-				.author(entity.getAuthor())
-				.category(entity.getCategory())
-				.date(entity.getDate())
+				.post_author(entity.getPost_author())
+				.post_category(entity.getPost_category())
+				.post_date(entity.getPost_date())
 				.build();
 	}
 }
