@@ -1,4 +1,4 @@
-package br.com.espatodea.postAPI.br.com.espatodea.postAPI;
+package br.com.espatodea.espatodeAPI.br.com.espatodea.espatodeAPI;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
