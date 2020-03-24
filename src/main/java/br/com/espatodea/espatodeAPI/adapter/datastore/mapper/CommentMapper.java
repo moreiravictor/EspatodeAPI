@@ -20,6 +20,7 @@ public class CommentMapper {
 				.comment_content(entity.getComment_content())
 				.comment_date(entity.getComment_date())
 				.comment_like(entity.getComment_like())
+				.comment_id(entity.getComment_id())
 				.post_id(entity.getPost().getPost_id())
 				.build();
 	}
