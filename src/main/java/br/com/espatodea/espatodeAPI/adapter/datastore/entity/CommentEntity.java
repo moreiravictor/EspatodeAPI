@@ -4,8 +4,11 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -28,9 +31,8 @@ public class CommentEntity {
 	@Column(name = "comment_id")
 	private int comment_id;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "post_id", referencedColumnName = "post_id")
-//	private PostEntity post;
+	@ManyToOne(fetch = FetchType.LAZY)
+	private PostEntity post;
 	
 	@Column(name = "comment_content")
 	private String comment_content;
