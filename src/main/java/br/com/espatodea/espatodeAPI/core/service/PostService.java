@@ -50,7 +50,7 @@ public class PostService {
 		Optional<PostEntity> optionalEntity = repo.findById(id);
 		
 		if(!optionalEntity.isPresent()) {
-			throw new NotFoundException(null);
+			throw new NotFoundException("Post not found");
 		}
 		
 		PostEntity entity = optionalEntity.get();
@@ -58,5 +58,13 @@ public class PostService {
 		entity.setTitle((model.getTitle() != null) ? model.getTitle() : entity.getTitle());
 
 		return PostMapper.unmarshall(repo.save(entity));	
+	}
+	
+	public Post delete(Integer id) throws NotFoundException {
+		if (!repo.findById(id).isPresent()) {
+			throw new NotFoundException("Post not found");
+		}
+		repo.deleteById(id);
+		return new Post();
 	}
 }
