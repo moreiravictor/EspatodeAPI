@@ -57,9 +57,7 @@ public class PostEntity {
 	@Column(name = "post_date")
 	private Date post_date;
 	
-	@OneToMany(
-			cascade = CascadeType.ALL
-//			mappedBy = "post"
-	)
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "post_id")
 	private List<CommentEntity> comments; 
 }
