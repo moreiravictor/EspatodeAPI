@@ -24,4 +24,6 @@ public class Comment {
 	private Date comment_date;
 	
 	private int comment_like;
+	
+	private Post post;
 }

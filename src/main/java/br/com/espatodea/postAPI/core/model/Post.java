@@ -2,6 +2,7 @@ package br.com.espatodea.postAPI.core.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.GeneratedValue;
 
@@ -34,5 +35,7 @@ public class Post{
 	private String post_author;
 	
 	private Date post_date;
+	
+	private List<Comment> comments;
 	
 }
