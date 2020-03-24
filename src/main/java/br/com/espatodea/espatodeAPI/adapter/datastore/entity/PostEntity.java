@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.ManyToAny;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import br.com.espatodea.espatodeAPI.core.model.Comment;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -59,4 +60,13 @@ public class PostEntity {
 	
 	@OneToMany(mappedBy = "post",cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CommentEntity> comments; 
+	
+	public void addComment(CommentEntity comment) {
+		this.comments.add(comment);
+		comment.setPost(this);
+	}
+	
+	public void removeComment(CommentEntity comment) {
+		
+	}
 }

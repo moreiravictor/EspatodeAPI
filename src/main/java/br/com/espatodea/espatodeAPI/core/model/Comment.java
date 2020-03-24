@@ -17,6 +17,8 @@ public class Comment {
 
 	private int comment_id;
 	
+	private int post_id;
+	
 	private String comment_content;
 	
 	private	String comment_author;

@@ -21,8 +21,10 @@ public class PostService {
 	@Autowired
 	PostRepository repo;
 	
-	public Post persist(Post model) {
-		PostEntity entity = repo.save(PostMapper.marshall(model));
+	public Post persist(Post post) {
+		PostEntity entity = PostMapper.marshall(post); 
+ 		entity.getComments().forEach(x -> x.setPost(entity));
+		repo.save(entity);
 		return PostMapper.unmarshall(entity);
 	}
 	

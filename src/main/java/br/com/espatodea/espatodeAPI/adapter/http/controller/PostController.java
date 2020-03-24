@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.espatodea.espatodeAPI.adapter.datastore.entity.PostEntity;
 import br.com.espatodea.espatodeAPI.core.model.Post;
 import br.com.espatodea.espatodeAPI.core.service.PostService;
 import javassist.NotFoundException;
