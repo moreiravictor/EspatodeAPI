@@ -1,4 +1,4 @@
-package br.com.espatodea.postAPI.adapter.http.controller;
+package br.com.espatodea.espatodeAPI.adapter.http.controller;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.espatodea.postAPI.core.model.Post;
-import br.com.espatodea.postAPI.core.service.PostService;
+import br.com.espatodea.espatodeAPI.core.model.Post;
+import br.com.espatodea.espatodeAPI.core.service.PostService;
 import javassist.NotFoundException;
 
 @CrossOrigin

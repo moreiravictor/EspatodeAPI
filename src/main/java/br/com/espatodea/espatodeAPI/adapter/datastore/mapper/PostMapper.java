@@ -1,9 +1,9 @@
-package br.com.espatodea.postAPI.adapter.datastore.mapper;
+package br.com.espatodea.espatodeAPI.adapter.datastore.mapper;
 
 import java.util.stream.Collectors;
 
-import br.com.espatodea.postAPI.adapter.datastore.entity.PostEntity;
-import br.com.espatodea.postAPI.core.model.Post;
+import br.com.espatodea.espatodeAPI.adapter.datastore.entity.PostEntity;
+import br.com.espatodea.espatodeAPI.core.model.Post;
 
 public class PostMapper {
 	

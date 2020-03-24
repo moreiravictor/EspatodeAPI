@@ -1,4 +1,4 @@
-package br.com.espatodea.postAPI.adapter.datastore.entity;
+package br.com.espatodea.espatodeAPI.adapter.datastore.entity;
 
 import java.util.ArrayList;
 import java.util.Date;

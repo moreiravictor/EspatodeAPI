@@ -1,4 +1,4 @@
-package br.com.espatodea.postAPI.core.model;
+package br.com.espatodea.espatodeAPI.core.model;
 
 import java.io.Serializable;
 import java.util.Date;

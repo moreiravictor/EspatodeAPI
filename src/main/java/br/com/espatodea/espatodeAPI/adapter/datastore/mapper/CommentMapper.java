@@ -1,7 +1,7 @@
-package br.com.espatodea.postAPI.adapter.datastore.mapper;
+package br.com.espatodea.espatodeAPI.adapter.datastore.mapper;
 
-import br.com.espatodea.postAPI.adapter.datastore.entity.CommentEntity;
-import br.com.espatodea.postAPI.core.model.Comment;
+import br.com.espatodea.espatodeAPI.adapter.datastore.entity.CommentEntity;
+import br.com.espatodea.espatodeAPI.core.model.Comment;
 
 public class CommentMapper {
 

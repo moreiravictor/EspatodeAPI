@@ -1,4 +1,4 @@
-package br.com.espatodea.postAPI.core.service;
+package br.com.espatodea.espatodeAPI.core.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,10 +7,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.espatodea.postAPI.adapter.datastore.entity.PostEntity;
-import br.com.espatodea.postAPI.adapter.datastore.mapper.PostMapper;
-import br.com.espatodea.postAPI.adapter.datastore.repository.PostRepository;
-import br.com.espatodea.postAPI.core.model.Post;
+import br.com.espatodea.espatodeAPI.adapter.datastore.entity.PostEntity;
+import br.com.espatodea.espatodeAPI.adapter.datastore.mapper.PostMapper;
+import br.com.espatodea.espatodeAPI.adapter.datastore.repository.PostRepository;
+import br.com.espatodea.espatodeAPI.core.model.Post;
 import javassist.NotFoundException;
 
 
