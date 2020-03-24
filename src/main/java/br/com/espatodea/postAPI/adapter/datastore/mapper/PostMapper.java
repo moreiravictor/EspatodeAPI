@@ -1,19 +1,14 @@
 package br.com.espatodea.postAPI.adapter.datastore.mapper;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
-import br.com.espatodea.postAPI.adapter.datastore.entity.CommentEntity;
 import br.com.espatodea.postAPI.adapter.datastore.entity.PostEntity;
-import br.com.espatodea.postAPI.core.model.Comment;
 import br.com.espatodea.postAPI.core.model.Post;
 
 public class PostMapper {
 	
 	public static PostEntity marshall(Post model) {
-		PostEntity entity = new PostEntity();
-		
-		PostEntity.builder()
+		return 	PostEntity.builder()
 				.post_content(model.getPost_content())
 				.post_id(model.getPost_id())
 				.post_likes(model.getPost_likes())
@@ -27,8 +22,6 @@ public class PostMapper {
 							.collect(Collectors.toList())
 						)
 				.build();
-		
-		return entity;
 	}
 	
 	

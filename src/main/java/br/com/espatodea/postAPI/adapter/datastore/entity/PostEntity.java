@@ -58,8 +58,8 @@ public class PostEntity {
 	private Date post_date;
 	
 	@OneToMany(
-			cascade = CascadeType.ALL,
-			mappedBy = "post"
+			cascade = CascadeType.ALL
+//			mappedBy = "post"
 	)
 	private List<CommentEntity> comments; 
 }

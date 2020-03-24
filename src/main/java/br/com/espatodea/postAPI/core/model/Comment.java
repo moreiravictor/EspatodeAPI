@@ -25,5 +25,5 @@ public class Comment {
 	
 	private int comment_like;
 	
-	private Post post;
+//	private Post post;
 }

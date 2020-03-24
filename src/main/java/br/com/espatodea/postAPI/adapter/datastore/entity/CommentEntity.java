@@ -30,9 +30,9 @@ public class CommentEntity {
 	@Column(name = "comment_id")
 	private int comment_id;
 	
-	@ManyToOne
-	@JoinColumn(name = "post_id", referencedColumnName = "post_id")
-	private PostEntity post;
+//	@ManyToOne
+//	@JoinColumn(name = "post_id", referencedColumnName = "post_id")
+//	private PostEntity post;
 	
 	@Column(name = "comment_content")
 	private String comment_content;
