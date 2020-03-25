@@ -5,15 +5,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import br.com.espatodea.espatodeAPI.adapter.datastore.entity.PostEntity;
 import br.com.espatodea.espatodeAPI.adapter.datastore.mapper.PostMapper;
 import br.com.espatodea.espatodeAPI.adapter.datastore.repository.PostRepository;
 import br.com.espatodea.espatodeAPI.core.model.Post;
-import javassist.NotFoundException;
-
-
 
 @Service
 public class PostService {
@@ -46,11 +45,11 @@ public class PostService {
 		return postList;
 	}
 	
-	public Post att(Post model, Integer id) throws NotFoundException {
+	public Post att(Post model, Integer id) throws ResponseStatusException {
 		Optional<PostEntity> optionalEntity = repo.findById(id);
 		
 		if(!optionalEntity.isPresent()) {
-			throw new NotFoundException("Post not found");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Post not found");
 		}
 		
 		PostEntity entity = optionalEntity.get();
@@ -60,9 +59,9 @@ public class PostService {
 		return PostMapper.unmarshall(repo.save(entity));	
 	}
 	
-	public Post delete(Integer id) throws NotFoundException {
+	public Post delete(Integer id) throws ResponseStatusException {
 		if (!repo.findById(id).isPresent()) {
-			throw new NotFoundException("Post not found");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Post not found");
 		}
 		repo.deleteById(id);
 		return new Post();

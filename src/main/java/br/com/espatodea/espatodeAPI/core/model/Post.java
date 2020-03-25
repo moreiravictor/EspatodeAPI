@@ -38,4 +38,8 @@ public class Post{
 	
 	private List<Comment> comments;
 	
+	public Post(Integer post_id) {
+		this.post_id = post_id;
+	}
+	
 }
