@@ -1,13 +1,8 @@
 package br.com.espatodea.espatodeAPI.core.model;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.GeneratedValue;
-
-import org.springframework.lang.Nullable;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,7 +25,7 @@ public class Post{
 	@GeneratedValue
 	private Integer post_id;
 	
-	private Integer post_category;
+	private List<Category> post_categories;
 	
 	private String post_author;
 	

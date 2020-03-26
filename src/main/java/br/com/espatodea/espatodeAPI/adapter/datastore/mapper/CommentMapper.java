@@ -1,5 +1,8 @@
 package br.com.espatodea.espatodeAPI.adapter.datastore.mapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import br.com.espatodea.espatodeAPI.adapter.datastore.entity.CommentEntity;
 import br.com.espatodea.espatodeAPI.core.model.Comment;
 
@@ -14,6 +17,12 @@ public class CommentMapper {
 				.build();
 	}
 	
+	public static List<CommentEntity> marshall(List<Comment> comment) {
+		return comment.stream()
+				.map(c -> CommentMapper.marshall(c))
+				.collect(Collectors.toList());
+	}
+	
 	public static Comment unmarshall(CommentEntity entity) {
 		return Comment.builder()
 				.comment_author(entity.getComment_author())
@@ -23,6 +32,12 @@ public class CommentMapper {
 				.comment_id(entity.getComment_id())
 				.post_id(entity.getPost().getPost_id())
 				.build();
+	}
+	
+	public static List<Comment> unmarshall(List<CommentEntity> entity) {
+		return entity.stream()
+				.map(c -> CommentMapper.unmarshall(c))
+				.collect(Collectors.toList());
 	}
 	
 }
