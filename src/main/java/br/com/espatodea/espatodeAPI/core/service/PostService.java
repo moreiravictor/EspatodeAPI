@@ -53,7 +53,8 @@ public class PostService {
 		}
 		
 		PostEntity entity = optionalEntity.get();
-		entity.setPost_categories(((model.getPost_categories() != null) ? CategoryMapper.marshall(model.getPost_categories()) : entity.getPost_categories()));
+		//TODO correct patch of categories
+//		entity.setPost_categories(((model.getPost_categories() != null) ? CategoryMapper.marshall(model.getPost_categories()) : entity.getPost_categories()));
 		entity.setPost_author((model.getPost_author() != null) ? model.getPost_author() : entity.getPost_author());
 		entity.setTitle((model.getTitle() != null) ? model.getTitle() : entity.getTitle());
 
