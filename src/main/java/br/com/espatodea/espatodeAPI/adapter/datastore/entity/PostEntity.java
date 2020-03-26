@@ -46,7 +46,7 @@ public class PostEntity {
 	@Column(name = "post_id")
 	private Integer post_id;
 	
-	@ManyToMany(cascade = CascadeType.MERGE)
+	@ManyToMany(cascade = CascadeType.REFRESH)
 	@JoinTable( name = "post_category",
 		joinColumns = @JoinColumn(name = "post_id"),
 		inverseJoinColumns = @JoinColumn(name = "category_id")
