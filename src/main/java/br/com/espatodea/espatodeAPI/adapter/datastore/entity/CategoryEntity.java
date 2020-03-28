@@ -3,6 +3,7 @@ package br.com.espatodea.espatodeAPI.adapter.datastore.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -25,7 +26,7 @@ public class CategoryEntity {
 	@Id
 	private int category_id;
 	
-	@ManyToMany(mappedBy = "post_categories")
+	@ManyToMany(mappedBy = "post_categories", fetch = FetchType.EAGER)
 	private List<PostEntity> posts;
 	
 	private String category_description;

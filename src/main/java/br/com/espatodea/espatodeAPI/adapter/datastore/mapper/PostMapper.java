@@ -12,9 +12,9 @@ public class PostMapper {
 				.post_likes(model.getPost_likes())
 				.title(model.getTitle())
 				.post_author(model.getPost_author())
-				.post_categories(CategoryMapper.marshall(model.getPost_categories()))
+				.post_categories((model.getPost_categories() != null) ? CategoryMapper.marshall(model.getPost_categories()) : null)
 				.post_date(model.getPost_date())
-				.comments(CommentMapper.marshall(model.getComments()))
+				.comments((model.getComments() != null) ? CommentMapper.marshall(model.getComments()) : null)
 				.build();
 	}
 	
@@ -26,9 +26,9 @@ public class PostMapper {
 				.post_likes(entity.getPost_likes())
 				.title(entity.getTitle())
 				.post_author(entity.getPost_author())
-				.post_categories(CategoryMapper.unmarshall(entity.getPost_categories()))
+				.post_categories((entity.getPost_categories() != null) ? CategoryMapper.unmarshall(entity.getPost_categories()) : null)
 				.post_date(entity.getPost_date())
-				.comments(CommentMapper.unmarshall(entity.getComments()))
+				.comments((entity.getComments() != null) ? CommentMapper.unmarshall(entity.getComments()) : null)
 				.build();
 	}
 }
