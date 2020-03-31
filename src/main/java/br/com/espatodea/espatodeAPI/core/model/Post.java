@@ -16,6 +16,8 @@ import lombok.Setter;
 @Getter
 public class Post{
 	
+	private String post_image_path;
+	
 	private String post_content;
 	
 	private String title;
