@@ -14,13 +14,13 @@ import br.com.espatodea.espatodeAPI.core.service.AdminService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("post")
+@RequestMapping("admin")
 public class AdminController {
 	
 	@Autowired
 	AdminService service = new AdminService();
 	
-	@GetMapping("/admin")
+	@GetMapping("/get")
 	public HttpReturn<Admin> userMatches(@RequestBody Admin admin) {
 		return new HttpReturn<Admin>(service.getAdmin(admin), HttpStatus.FOUND);
 	}

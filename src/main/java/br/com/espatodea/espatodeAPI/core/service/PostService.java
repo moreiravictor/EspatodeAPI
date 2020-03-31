@@ -48,6 +48,14 @@ public class PostService {
 		return postList;
 	}
 	
+	public Post findById(Integer id) throws ResponseStatusException {
+		Optional<PostEntity> optionalEntity = repo.findById(id);
+		if(!optionalEntity.isPresent()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Post not found");
+		} 
+		return PostMapper.unmarshall(optionalEntity.get());
+	}
+	
 	public Post att(Post model, Integer id) throws ResponseStatusException {
 		Optional<PostEntity> optionalEntity = repo.findById(id);
 		
