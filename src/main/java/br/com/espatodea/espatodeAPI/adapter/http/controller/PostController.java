@@ -21,7 +21,7 @@ import br.com.espatodea.espatodeAPI.core.model.Post;
 import br.com.espatodea.espatodeAPI.core.service.PostService;
 import javassist.NotFoundException;
 
-@CrossOrigin(origins = "http://localhost", maxAge = 3600)
+@CrossOrigin
 @RestController
 @RequestMapping("post")
 public class PostController {
@@ -46,7 +46,6 @@ public class PostController {
 		return new HttpReturn<List<Post>>(service.findByTitle(title), HttpStatus.FOUND);
 	}
 	
-	@CrossOrigin
 	@GetMapping("/getById/{id}")
 	public HttpReturn<Post> listByTitle(@PathVariable Integer id) {
 		return new HttpReturn<Post>(service.findById(id), HttpStatus.FOUND);
