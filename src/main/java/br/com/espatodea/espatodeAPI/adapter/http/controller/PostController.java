@@ -21,7 +21,7 @@ import br.com.espatodea.espatodeAPI.core.model.Post;
 import br.com.espatodea.espatodeAPI.core.service.PostService;
 import javassist.NotFoundException;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:8080/#/post/see", maxAge = 3600)
 @RestController
 @RequestMapping("post")
 public class PostController {
