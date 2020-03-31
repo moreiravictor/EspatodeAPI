@@ -46,6 +46,7 @@ public class PostController {
 		return new HttpReturn<List<Post>>(service.findByTitle(title), HttpStatus.FOUND);
 	}
 	
+	@CrossOrigin
 	@GetMapping("/getById/{id}")
 	public HttpReturn<Post> listByTitle(@PathVariable Integer id) {
 		return new HttpReturn<Post>(service.findById(id), HttpStatus.FOUND);
