@@ -46,8 +46,8 @@ public class PostController {
 		return new HttpReturn<List<Post>>(service.findByTitle(title), HttpStatus.FOUND);
 	}
 	
-	@GetMapping("/getById")
-	public HttpReturn<Post> listByTitle(@RequestParam Integer id) {
+	@GetMapping("/getById/{id}")
+	public HttpReturn<Post> listByTitle(@PathVariable Integer id) {
 		return new HttpReturn<Post>(service.findById(id), HttpStatus.FOUND);
 	}
 	
