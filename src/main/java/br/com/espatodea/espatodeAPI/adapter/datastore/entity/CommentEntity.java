@@ -36,7 +36,7 @@ public class CommentEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private PostEntity post;
 	
-	@Column(name = "comment_content")
+	@Column(name = "comment_content", columnDefinition = "TEXT")
 	private String comment_content;
 	
 	@Column(name = "comment_author")
