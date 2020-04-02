@@ -1,5 +1,6 @@
 package br.com.espatodea.espatodeAPI.core.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,6 +30,7 @@ public class CommentService {
 		if (!postRepo.findById(post_id).isPresent()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Post does not exist");
 		}
+		comment.setComment_date(new Date());
 		PostEntity post = PostEntity.builder().post_id(post_id).build();
 		CommentEntity entity = CommentMapper.marshall(comment);
 		entity.setPost(post);

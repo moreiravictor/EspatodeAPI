@@ -1,6 +1,7 @@
 package br.com.espatodea.espatodeAPI.core.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +23,8 @@ public class PostService {
 	PostRepository repo;
 	
 	public Post persist(Post post) {
+		post.setPost_date(new Date());
+		post.getComments().forEach(x -> x.setComment_date(new Date()));
 		PostEntity entity = PostMapper.marshall(post); 
  		if (post.getComments() != null) {
  			entity.getComments().forEach(x -> x.setPost(entity));
