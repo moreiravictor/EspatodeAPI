@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -37,7 +36,6 @@ public class CommentEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private PostEntity post;
 	
-	@Lob
 	@Column(name = "comment_content", columnDefinition = "TEXT")
 	private String comment_content;
 	
