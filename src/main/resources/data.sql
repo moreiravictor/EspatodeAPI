@@ -8,4 +8,4 @@ INSERT INTO CATEGORIES VALUES (0, 'Meio Ambiente'),
 (7, 'Dicas de Comida'),
 (8, 'Receitas'),
 (9, 'Entenda mais'),
-(8, 'Comece aqui')
+(10, 'Comece aqui')
