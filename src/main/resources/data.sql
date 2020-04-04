@@ -1,1 +1,11 @@
-INSERT INTO CATEGORIES VALUES (0, 'Environment'), (1, 'Environment Tips'), (2, 'Projects'), (3, 'Our Projects'), (4, 'Other Projects'), (5, 'Entertainment'), (6, 'Food'), (7, 'Food Tips'), (8, 'Food Recipes')
+INSERT INTO CATEGORIES VALUES (0, 'Meio Ambiente'),
+(1, 'Dicas de Meio Ambiente'),
+(2, 'Projetos'),
+(3, 'Nossos Projetos'),
+(4, 'Outros Projetos'),
+(5, 'Entretenimento'),
+(6, 'Comida'),
+(7, 'Dicas de Comida'),
+(8, 'Receitas'),
+(9, 'Entenda mais'),
+(8, 'Comece aqui')
