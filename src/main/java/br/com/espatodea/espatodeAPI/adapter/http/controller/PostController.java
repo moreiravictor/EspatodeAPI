@@ -51,6 +51,11 @@ public class PostController {
 		return new HttpReturn<Post>(service.findById(id), HttpStatus.FOUND);
 	}
 	
+	@GetMapping("/getByCategory/{category_id}")
+	public HttpReturn<List<Post>> listByCategory(@PathVariable Integer category_id) {
+		return new HttpReturn<List<Post>>(service.findByCategory(category_id), HttpStatus.FOUND);
+	}
+	
 	@PatchMapping("/patch/{id}")
 	public HttpReturn<Post> PatchPost(@PathVariable Integer id
 							,@RequestBody Post model) throws NotFoundException {

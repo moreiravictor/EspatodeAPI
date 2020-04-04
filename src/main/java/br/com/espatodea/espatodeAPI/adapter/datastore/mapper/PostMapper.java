@@ -13,7 +13,7 @@ public class PostMapper {
 				.title(model.getTitle())
 				.post_author(model.getPost_author())
 				.post_image_path(model.getPost_image_path())
-				.post_categories((model.getPost_categories() != null) ? CategoryMapper.marshall(model.getPost_categories()) : null)
+				.postCategories((model.getPost_categories() != null) ? CategoryMapper.marshall(model.getPost_categories()) : null)
 				.post_date(model.getPost_date())
 				.comments((model.getComments() != null) ? CommentMapper.marshall(model.getComments()) : null)
 				.build();
@@ -28,7 +28,7 @@ public class PostMapper {
 				.title(entity.getTitle())
 				.post_author(entity.getPost_author())
 				.post_image_path(entity.getPost_image_path())
-				.post_categories((entity.getPost_categories() != null) ? CategoryMapper.unmarshall(entity.getPost_categories()) : null)
+				.post_categories((entity.getPostCategories() != null) ? CategoryMapper.unmarshall(entity.getPostCategories()) : null)
 				.post_date(entity.getPost_date())
 				.comments((entity.getComments() != null) ? CommentMapper.unmarshall(entity.getComments()) : null)
 				.build();

@@ -55,7 +55,7 @@ public class PostEntity {
 		joinColumns = @JoinColumn(name = "post_id"),
 		inverseJoinColumns = @JoinColumn(name = "category_id")
 	)
-	private List<CategoryEntity> post_categories;
+	private List<CategoryEntity> postCategories;
 	
 	@Column(name = "post_author")
 	private String post_author;

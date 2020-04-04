@@ -26,7 +26,7 @@ public class CategoryEntity {
 	@Id
 	private int category_id;
 	
-	@ManyToMany(mappedBy = "post_categories", fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "postCategories", fetch = FetchType.EAGER)
 	private List<PostEntity> posts;
 	
 	private String category_description;
