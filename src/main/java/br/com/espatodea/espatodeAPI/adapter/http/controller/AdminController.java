@@ -22,8 +22,8 @@ public class AdminController {
 	AdminService service = new AdminService();
 	
 	@GetMapping("/get")
-	public HttpReturn<Admin> userMatches(@RequestParam Admin admin) {
-		return new HttpReturn<Admin>(service.getAdmin(admin), HttpStatus.FOUND);
+	public HttpReturn<Admin> userMatches(@RequestParam String username, @RequestParam String password) {
+		return new HttpReturn<Admin>(service.getAdmin(username, password), HttpStatus.FOUND);
 	}
 
 }

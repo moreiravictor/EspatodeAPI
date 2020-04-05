@@ -16,9 +16,9 @@ public class AdminService {
 	@Autowired
 	AdminRepository repo;
 	
-	public Admin getAdmin(Admin admin) throws ResponseStatusException{
+	public Admin getAdmin(String username, String password) throws ResponseStatusException{
 		
-		AdminEntity entity= repo.findByUsernameAndPassword(admin.getUsername(), admin.getPassword());
+		AdminEntity entity= repo.findByUsernameAndPassword(username, password);
 		if (entity == null) {
 				throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Wrong combination");
 		}
