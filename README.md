@@ -17,7 +17,7 @@ EspatodeAPI is a REST API built to manage the Espatodea blog, which intends to s
   - /comment/getCommentsByPost/{id_post}
   
 <br/>3.login:
-  - /post/admin
+  - /admin/get
   ---
 ### built with
   - [Java](https://www.java.com/pt_BR)
