@@ -22,6 +22,7 @@ public class AdminService {
 		if (entity == null) {
 				throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Wrong combination");
 		}
+		entity.setPassword(null);
 		
 		return AdminMapper.unmarshall(entity);
 	}
