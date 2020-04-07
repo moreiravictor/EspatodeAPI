@@ -86,6 +86,7 @@ public class PostService {
 		entity.setPostCategories((model.getPost_categories() != null) ? CategoryMapper.marshall(model.getPost_categories()) : entity.getPostCategories());
 		entity.setPost_author((model.getPost_author() != null) ? model.getPost_author() : entity.getPost_author());
 		entity.setTitle((model.getTitle() != null) ? model.getTitle() : entity.getTitle());
+		entity.setPost_content((model.getPost_content() != null) ? model.getPost_content() : entity.getPost_content());
 
 		return PostMapper.unmarshall(repo.save(entity));	
 	}
