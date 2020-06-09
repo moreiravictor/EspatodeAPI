@@ -87,6 +87,7 @@ public class PostService {
 		entity.setPost_author((model.getPost_author() != null) ? model.getPost_author() : entity.getPost_author());
 		entity.setTitle((model.getTitle() != null) ? model.getTitle() : entity.getTitle());
 		entity.setPost_content((model.getPost_content() != null) ? model.getPost_content() : entity.getPost_content());
+		entity.setPost_image_path((model.getPost_image_path() != null) ? model.getPost_image_path() : entity.getPost_image_path());
 
 		return PostMapper.unmarshall(repo.save(entity));	
 	}
