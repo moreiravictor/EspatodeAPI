@@ -47,7 +47,7 @@ public class PostController {
 	}
 	
 	@GetMapping("/getById/{id}")
-	public HttpReturn<Post> listByTitle(@PathVariable Integer id) {
+	public HttpReturn<Post> getById(@PathVariable Integer id) {
 		return new HttpReturn<Post>(service.findById(id), HttpStatus.FOUND);
 	}
 	

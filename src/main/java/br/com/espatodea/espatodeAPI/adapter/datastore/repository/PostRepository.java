@@ -11,7 +11,7 @@ import br.com.espatodea.espatodeAPI.adapter.datastore.entity.PostEntity;
 @Repository
 public interface PostRepository extends JpaRepository<PostEntity, Integer> {
 
-	List<PostEntity> findByTitle(String title);
+	List<PostEntity> findByTitleContaining(String title);
 	
 	List<PostEntity> findByPostCategories(CategoryEntity category);
 }

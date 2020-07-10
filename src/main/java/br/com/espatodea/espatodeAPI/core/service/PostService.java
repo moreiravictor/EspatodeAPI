@@ -45,7 +45,7 @@ public class PostService {
 	
 	public List<Post> findByTitle(String title) {		 
 		List<Post> postList = new ArrayList<>(); 
-		List<PostEntity> entityList = repo.findByTitle(title);
+		List<PostEntity> entityList = repo.findByTitleContaining(title);
 		for (PostEntity entity : entityList) {
 			postList.add(PostMapper.unmarshall(entity));
 		}
