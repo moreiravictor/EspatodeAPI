@@ -24,12 +24,7 @@ public class PostService {
 	PostRepository repo;
 	
 	public Post persist(Post post) {
-		post.setPost_date(new Date());
-		post.getComments().forEach(x -> x.setComment_date(new Date()));
-		PostEntity entity = PostMapper.marshall(post); 
- 		if (post.getComments() != null) {
- 			entity.getComments().forEach(x -> x.setPost(entity));
- 		}
+		PostEntity entity = PostMapper.marshall(post);
 		repo.save(entity);
 		return PostMapper.unmarshall(entity);
 	}
@@ -83,6 +78,7 @@ public class PostService {
 		}
 		
 		PostEntity entity = optionalEntity.get();
+		entity.setPost_date((model.getPost_date() != null) ? model.getPost_date() : entity.getPost_date());
 		entity.setPostCategories((model.getPost_categories() != null) ? CategoryMapper.marshall(model.getPost_categories()) : entity.getPostCategories());
 		entity.setPost_author((model.getPost_author() != null) ? model.getPost_author() : entity.getPost_author());
 		entity.setTitle((model.getTitle() != null) ? model.getTitle() : entity.getTitle());
