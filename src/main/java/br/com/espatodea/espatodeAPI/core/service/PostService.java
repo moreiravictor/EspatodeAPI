@@ -38,9 +38,12 @@ public class PostService {
 		return postList;
 	}
 	
-	public List<Post> findByTitle(String title) {		 
+	public List<Post> findByTitle(String title) throws ResponseStatusException {
 		List<Post> postList = new ArrayList<>(); 
 		List<PostEntity> entityList = repo.findByTitleContaining(title);
+		if (entityList.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Post not found");
+		}
 		for (PostEntity entity : entityList) {
 			postList.add(PostMapper.unmarshall(entity));
 		}
