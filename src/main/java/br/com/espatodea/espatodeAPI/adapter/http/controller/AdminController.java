@@ -21,7 +21,7 @@ public class AdminController {
 	@Autowired
 	AdminService service = new AdminService();
 	
-	@GetMapping("/get")
+	@GetMapping
 	public HttpReturn<Admin> userMatches(@RequestParam String username, @RequestParam String password) {
 		return new HttpReturn<Admin>(service.getAdmin(username, password), HttpStatus.FOUND);
 	}

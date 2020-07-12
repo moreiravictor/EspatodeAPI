@@ -29,40 +29,37 @@ public class PostController {
 	@Autowired
 	PostService service = new PostService();
 	
-	@PostMapping("/publish")
+	@PostMapping
 	public HttpReturn<Post> post(@RequestBody Post model) {
 		return new HttpReturn<Post>(service.persist(model), HttpStatus.CREATED);
 	}
 	
-	
-	@GetMapping("/getAll")
+	@GetMapping
 	public HttpReturn<List<Post>> listAll() {
-		
 		return new HttpReturn<List<Post>>(service.list(), HttpStatus.FOUND);
 	}
 	
-	@GetMapping("/getByTitle")
+	@GetMapping("/title")
 	public HttpReturn<List<Post>> listByTitle(@RequestParam String title) {
 		return new HttpReturn<List<Post>>(service.findByTitle(title), HttpStatus.FOUND);
 	}
 	
-	@GetMapping("/getById/{id}")
+	@GetMapping("/{id}")
 	public HttpReturn<Post> getById(@PathVariable Integer id) {
 		return new HttpReturn<Post>(service.findById(id), HttpStatus.FOUND);
 	}
 	
-	@GetMapping("/getByCategory/{category_id}")
+	@GetMapping("/category/{category_id}")
 	public HttpReturn<List<Post>> listByCategory(@PathVariable Integer category_id) {
 		return new HttpReturn<List<Post>>(service.findByCategory(category_id), HttpStatus.FOUND);
 	}
 	
-	@PatchMapping("/patch/{id}")
-	public HttpReturn<Post> PatchPost(@PathVariable Integer id
-							,@RequestBody Post model) throws NotFoundException {
+	@PatchMapping("/{id}")
+	public HttpReturn<Post> PatchPost(@PathVariable Integer id, @RequestBody Post model) throws NotFoundException {
 		return new HttpReturn<Post>(service.att(model, id), HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/{id}")
 	public HttpReturn<Post> DeletePost(@PathVariable Integer id) throws NotFoundException {
 		return new HttpReturn<Post>(service.delete(id), HttpStatus.OK);
 	}

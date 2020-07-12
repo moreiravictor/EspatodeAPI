@@ -25,17 +25,17 @@ public class CommentController {
 	@Autowired
 	CommentService service;
 	
-	@PostMapping("/publish")
+	@PostMapping
 	public HttpReturn<Comment> postComment(@RequestBody Comment comment) {
 		return new HttpReturn<Comment>(service.persist(comment, comment.getPost_id()), HttpStatus.CREATED);
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/{id}")
 	public HttpReturn<Comment> deleteComment(@PathVariable Integer id) {
 		return new HttpReturn<Comment>(service.delete(id), HttpStatus.OK);
 	}
 	
-	@GetMapping("/getCommentsByPost/{id_post}")
+	@GetMapping("/post/{id_post}")
 	public HttpReturn<List<Comment>> getComments(@PathVariable Integer id_post) {
 		return new HttpReturn<List<Comment>>(service.getCommentsByPost(id_post), HttpStatus.OK);
 	}

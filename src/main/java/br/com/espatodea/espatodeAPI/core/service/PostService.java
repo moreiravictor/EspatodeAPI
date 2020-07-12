@@ -40,7 +40,7 @@ public class PostService {
 	
 	public List<Post> findByTitle(String title) throws ResponseStatusException {
 		List<Post> postList = new ArrayList<>(); 
-		List<PostEntity> entityList = repo.findByTitleContaining(title);
+		List<PostEntity> entityList = repo.findByTitleContainingIgnoreCase(title);
 		if (entityList.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Post not found");
 		}
