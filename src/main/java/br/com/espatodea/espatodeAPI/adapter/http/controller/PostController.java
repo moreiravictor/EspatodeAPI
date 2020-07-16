@@ -3,6 +3,7 @@ package br.com.espatodea.espatodeAPI.adapter.http.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -50,8 +51,8 @@ public class PostController {
 	}
 	
 	@GetMapping("/category/{category_id}")
-	public HttpReturn<List<Post>> listByCategory(@PathVariable Integer category_id) {
-		return new HttpReturn<List<Post>>(service.findByCategory(category_id), HttpStatus.FOUND);
+	public HttpReturn<List<Post>> listByCategory(@PathVariable Integer category_id, Pageable page) {
+		return new HttpReturn<List<Post>>(service.findByCategory(category_id, page), HttpStatus.FOUND);
 	}
 	
 	@PatchMapping("/{id}")

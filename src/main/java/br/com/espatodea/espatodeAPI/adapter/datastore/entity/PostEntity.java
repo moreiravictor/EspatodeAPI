@@ -62,7 +62,7 @@ public class PostEntity {
 	
 	@DateTimeFormat(pattern="yyyy/MM/dd hh:mm:ss")
 	@Column(name = "post_date")
-	private Date post_date;
+	private Date postDate;
 	
 	@OneToMany(mappedBy = "post",cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CommentEntity> comments; 

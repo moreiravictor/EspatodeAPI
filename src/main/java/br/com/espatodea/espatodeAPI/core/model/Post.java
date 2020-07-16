@@ -31,7 +31,7 @@ public class Post{
 	
 	private String post_author;
 	
-	private Date post_date = new Date();
+	private Date postDate = new Date();
 	
 	private List<Comment> comments;
 	

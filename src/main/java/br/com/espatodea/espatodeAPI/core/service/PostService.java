@@ -1,11 +1,11 @@
 package br.com.espatodea.espatodeAPI.core.service;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -58,10 +58,10 @@ public class PostService {
 		return PostMapper.unmarshall(optionalEntity.get());
 	}
 	
-	public List<Post> findByCategory(Integer category_id) throws ResponseStatusException {
+	public List<Post> findByCategory(Integer category_id, Pageable page) throws ResponseStatusException {
 		CategoryEntity cat_ent = new CategoryEntity();
 		cat_ent.setCategory_id(category_id);
-		List<PostEntity> entityList = repo.findByPostCategories(cat_ent);
+		List<PostEntity> entityList = repo.findByPostCategoriesOrderByPostDateDesc(cat_ent, page);
 		if(entityList.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No posts within this category");
 		}
@@ -81,7 +81,7 @@ public class PostService {
 		}
 		
 		PostEntity entity = optionalEntity.get();
-		entity.setPost_date((model.getPost_date() != null) ? model.getPost_date() : entity.getPost_date());
+		entity.setPostDate((model.getPostDate() != null) ? model.getPostDate() : entity.getPostDate());
 		entity.setPostCategories((model.getPost_categories() != null) ? CategoryMapper.marshall(model.getPost_categories()) : entity.getPostCategories());
 		entity.setPost_author((model.getPost_author() != null) ? model.getPost_author() : entity.getPost_author());
 		entity.setTitle((model.getTitle() != null) ? model.getTitle() : entity.getTitle());
