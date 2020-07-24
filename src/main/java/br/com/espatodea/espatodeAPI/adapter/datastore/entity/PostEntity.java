@@ -65,7 +65,7 @@ public class PostEntity {
 	private Date postDate;
 	
 	@OneToMany(mappedBy = "post",cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<CommentEntity> comments; 
+	private List<CommentEntity> comments;
 	
 	public PostEntity(Integer post_id) {
 		this.post_id = post_id;
