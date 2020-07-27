@@ -18,6 +18,8 @@ import com.google.api.services.gmail.GmailScopes;
 import com.google.api.services.gmail.model.Label;
 import com.google.api.services.gmail.model.ListLabelsResponse;
 import com.google.api.services.gmail.model.Message;
+import com.google.api.services.people.v1.PeopleService;
+import com.google.api.services.people.v1.PeopleServiceScopes;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 
@@ -27,6 +29,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.*;
 import java.security.GeneralSecurityException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
@@ -38,10 +41,13 @@ public class NewsletterService {
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static final String TOKENS_DIRECTORY_PATH = "tokens";
 
-    private static final List<String> SCOPES = Collections.singletonList(GmailScopes.GMAIL_SEND);
+    private static List<String> SCOPES = new ArrayList<>();
     private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
 
     public static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
+        SCOPES.add(GmailScopes.GMAIL_LABELS);
+        SCOPES.add(GmailScopes.GMAIL_SEND);
+        SCOPES.add(PeopleServiceScopes.CONTACTS);
         // Load client secrets.
         InputStream in = NewsletterController.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
         if (in == null) {
@@ -61,7 +67,7 @@ public class NewsletterService {
 
     public HttpReturn<Object> auth() throws IOException, GeneralSecurityException {
         Gmail service = getGmailervice();
-        String user = "me";
+        String user = "espatodea3@gmail.com";
         ListLabelsResponse listResponse = service.users().labels().list(user).execute();
         List<Label> labels = listResponse.getLabels();
         if (labels.isEmpty()) {
@@ -90,6 +96,14 @@ public class NewsletterService {
     public Gmail getGmailervice() throws IOException, GeneralSecurityException {
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
         Gmail service = new Gmail.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+                .setApplicationName(APPLICATION_NAME)
+                .build();
+        return service;
+    }
+
+    public PeopleService getPeopleService() throws IOException, GeneralSecurityException {
+        final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+        PeopleService service = new PeopleService.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
                 .setApplicationName(APPLICATION_NAME)
                 .build();
         return service;

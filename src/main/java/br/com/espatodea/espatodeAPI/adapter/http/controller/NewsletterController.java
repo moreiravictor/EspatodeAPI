@@ -4,10 +4,13 @@ import br.com.espatodea.espatodeAPI.core.model.HttpReturn;
 import br.com.espatodea.espatodeAPI.core.service.NewsletterService;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.model.Message;
+import com.google.api.services.people.v1.PeopleService;
+import com.google.api.services.people.v1.model.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import java.io.*;
 import java.security.GeneralSecurityException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -33,5 +36,27 @@ public class NewsletterController {
         message = gmailService.users().messages().send(source_email, message).execute();
 
         return new HttpReturn<>(message, HttpStatus.OK);
+    }
+
+    @PostMapping("/add")
+    public HttpReturn<Object> addEmailToNewsletter(@RequestParam String email, @RequestParam String name) throws IOException, GeneralSecurityException {
+        PeopleService peopleService = service.getPeopleService();
+
+        Person new_person = new Person();
+
+        List names = new ArrayList<>();
+        names.add(new Name().setGivenName(name));
+        new_person.setNames(names);
+
+//        ContactGroupMembership contactGroupMembership = new ContactGroupMembership().setContactGroupResourceName("newsletter");
+//
+//        List memberships = new ArrayList();
+//        Membership membership = new Membership().setContactGroupMembership(contactGroupMembership);
+//        memberships.add(membership);
+//        new_person.setMemberships(memberships);
+
+        Person created = peopleService.people().createContact(new_person).execute();
+
+        return new HttpReturn<>(created, HttpStatus.OK);
     }
 }
