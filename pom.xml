@@ -89,10 +89,11 @@
 			<artifactId>javax.mail</artifactId>
 			<version>1.6.2</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-people -->
 		<dependency>
 			<groupId>com.google.apis</groupId>
 			<artifactId>google-api-services-people</artifactId>
-			<version>v1-rev506-1.25.0</version>
+			<version>v1-rev537-1.25.0</version>
 		</dependency>
 	</dependencies>
 

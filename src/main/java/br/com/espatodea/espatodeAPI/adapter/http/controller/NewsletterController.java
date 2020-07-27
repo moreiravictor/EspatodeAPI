@@ -1,11 +1,14 @@
 package br.com.espatodea.espatodeAPI.adapter.http.controller;
 
 import br.com.espatodea.espatodeAPI.core.model.HttpReturn;
+import br.com.espatodea.espatodeAPI.core.model.NewsletterSubscriber;
 import br.com.espatodea.espatodeAPI.core.service.NewsletterService;
+import br.com.espatodea.espatodeAPI.core.service.NewsletterSubscriberService;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.model.Message;
 import com.google.api.services.people.v1.PeopleService;
 import com.google.api.services.people.v1.model.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import java.io.*;
@@ -20,6 +23,8 @@ import javax.mail.internet.MimeMessage;
 @RequestMapping("news")
 public class NewsletterController {
 
+    @Autowired
+    private NewsletterSubscriberService subService = new NewsletterSubscriberService();
     private NewsletterService service = new NewsletterService();
     private static final String source_email = "espatodea3@gmail.com";
 
@@ -40,6 +45,9 @@ public class NewsletterController {
 
     @PostMapping("/add")
     public HttpReturn<Object> addEmailToNewsletter(@RequestParam String email, @RequestParam String name) throws IOException, GeneralSecurityException {
+
+        subService.persist(NewsletterSubscriber.builder().email(email).name(name).build());
+
         PeopleService peopleService = service.getPeopleService();
 
         Person new_person = new Person();
@@ -48,7 +56,7 @@ public class NewsletterController {
         names.add(new Name().setGivenName(name));
         new_person.setNames(names);
 
-//        ContactGroupMembership contactGroupMembership = new ContactGroupMembership().setContactGroupResourceName("newsletter");
+//        ContactGroupMembership contactGroupMembership = new ContactGroupMembership().setContactGroupResourceName("contactGroups/starred");
 //
 //        List memberships = new ArrayList();
 //        Membership membership = new Membership().setContactGroupMembership(contactGroupMembership);
@@ -56,6 +64,13 @@ public class NewsletterController {
 //        new_person.setMemberships(memberships);
 
         Person created = peopleService.people().createContact(new_person).execute();
+        String id = created.getResourceName();
+
+        List people = new ArrayList<>();
+        people.add(id);
+        ModifyContactGroupMembersRequest request = new ModifyContactGroupMembersRequest().setResourceNamesToAdd(people);
+
+//        peopleService.contactGroups().members().modify("contactGroups/newsletter", request).execute();
 
         return new HttpReturn<>(created, HttpStatus.OK);
     }
