@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.*;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -27,6 +28,7 @@ public class NewsletterController {
     private NewsletterSubscriberService subService = new NewsletterSubscriberService();
     private NewsletterService service = new NewsletterService();
     private static final String source_email = "espatodea3@gmail.com";
+    private static final String newsletter_group = "7518cc498cabfbfa";
 
     @PostMapping("/auth")
     public HttpReturn<Object> auth() throws IOException, GeneralSecurityException {
@@ -45,33 +47,18 @@ public class NewsletterController {
 
     @PostMapping("/add")
     public HttpReturn<Object> addEmailToNewsletter(@RequestParam String email, @RequestParam String name) throws IOException, GeneralSecurityException {
-
         subService.persist(NewsletterSubscriber.builder().email(email).name(name).build());
 
         PeopleService peopleService = service.getPeopleService();
 
-        Person new_person = new Person();
-
-        List names = new ArrayList<>();
-        names.add(new Name().setGivenName(name));
-        new_person.setNames(names);
-
-//        ContactGroupMembership contactGroupMembership = new ContactGroupMembership().setContactGroupResourceName("contactGroups/starred");
-//
-//        List memberships = new ArrayList();
-//        Membership membership = new Membership().setContactGroupMembership(contactGroupMembership);
-//        memberships.add(membership);
-//        new_person.setMemberships(memberships);
-
+        Person new_person = new Person().setNames(Collections.singletonList(new Name().setGivenName(name)));
         Person created = peopleService.people().createContact(new_person).execute();
-        String id = created.getResourceName();
 
-        List people = new ArrayList<>();
-        people.add(id);
+        List people = Collections.singletonList(created.getResourceName());
         ModifyContactGroupMembersRequest request = new ModifyContactGroupMembersRequest().setResourceNamesToAdd(people);
-
-//        peopleService.contactGroups().members().modify("contactGroups/newsletter", request).execute();
+        peopleService.contactGroups().members().modify("contactGroups/"+newsletter_group, request).execute();
 
         return new HttpReturn<>(created, HttpStatus.OK);
     }
+
 }
